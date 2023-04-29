@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # app_geo
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Suivie-Enfant
+>>>>>>> 7d1ffc887078e53f620ab5a7b534e07c9de73e63
