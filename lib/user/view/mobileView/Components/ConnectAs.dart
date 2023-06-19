@@ -107,7 +107,7 @@ class _ConnectAsState extends State<ConnectAs> {
                                 }
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(3.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +155,7 @@ class _ConnectAsState extends State<ConnectAs> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 80, top: 10),
+                                          left: 70, top: 10),
                                       child: Text(
                                         index == 1 ? "Child" : 'Parent',
                                         style: GoogleFonts.oleoScript(

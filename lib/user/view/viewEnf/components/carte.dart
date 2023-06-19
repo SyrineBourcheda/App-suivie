@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:app_geo/user/controller/app.controller.dart';
 import 'package:app_geo/user/controller/user.controller.dart';
 import 'package:app_geo/user/model/App.model.dart';
+import 'package:app_geo/user/view/mobileView/Components/signOut.dart';
 import 'package:app_geo/user/view/mobileView/homePage/HomePageMobile.dart';
 import 'package:app_geo/user/view/viewEnf/components/chatEnfant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -260,7 +261,7 @@ class _MapFormState extends State<MapForm> {
                     leading: Icon(Icons.account_circle_rounded),
                     leadingWidth: 150,
                     title: Text(
-                      'App Name',
+                      'KidLocator',
                       style: GoogleFonts.oleoScript(
                         color: Colors.white,
                         fontSize: 20.0,

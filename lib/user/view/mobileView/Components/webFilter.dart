@@ -44,7 +44,7 @@ class _WebFilter extends State<WebFilter> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const Padding(padding: EdgeInsets.only(top: 50)),
+                    const Padding(padding: EdgeInsets.only(top: 20)),
                     Text(
                       "We would like to bring to your attention that children may have easy  access to numerous inappropriate  websites that may contain violent ,  explicit, or age-inappropriate   content. Therefore, it is crucial that  you keep an eye on your child's  internet usage and take measures  to safeguard their online safety.  We suggest that you set up parenta  controls on their devices to help  restrict access to inappropriate content. To do this, you can follow the step  below:",
                       textAlign: TextAlign.left,
@@ -54,7 +54,7 @@ class _WebFilter extends State<WebFilter> {
                         color: Colors.black,
                       ),
                     ),
-                    const Padding(padding: EdgeInsets.only(top: 70)),
+                    const Padding(padding: EdgeInsets.only(top: 50)),
                     Center(
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(

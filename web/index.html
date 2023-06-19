@@ -24,6 +24,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="app_geo">
+  <meta name="geolocation" content="true">
+
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
@@ -38,6 +40,8 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  
+
 </head>
 <body>
   <script>
@@ -53,6 +57,11 @@
           });
         }
       });
+    });
+  </script>
+   <script>
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position.coords.latitude, position.coords.longitude);
     });
   </script>
 </body>

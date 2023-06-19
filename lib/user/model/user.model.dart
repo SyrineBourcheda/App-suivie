@@ -5,6 +5,8 @@ class User_app {
   String PassWord;
   String role;
   bool isLoggedIn;
+  DateTime paymentDate;
+  String paymentStatus;
 
   User_app(
       {this.Id = "",
@@ -12,7 +14,9 @@ class User_app {
       required this.email,
       required this.PassWord,
       required this.role,
-      this.isLoggedIn = false});
+      this.isLoggedIn = false,
+      required this.paymentDate,
+      required this.paymentStatus});
 
   Map<String, dynamic> toJson() {
     return {
@@ -21,7 +25,9 @@ class User_app {
       'email': email,
       'Password': PassWord,
       'role': role,
-      'isLoggedIn': isLoggedIn
+      'isLoggedIn': isLoggedIn,
+      'paymentDate': paymentDate,
+      'paymentStatus': paymentStatus
     };
   }
 
@@ -32,6 +38,8 @@ class User_app {
         email: json['email'],
         PassWord: json['Password'],
         role: json['role'],
-        isLoggedIn: json['isLoggedIn']);
+        isLoggedIn: json['isLoggedIn'],
+        paymentDate: json['paymentDate'],
+        paymentStatus: json['paymentStatus']);
   }
 }

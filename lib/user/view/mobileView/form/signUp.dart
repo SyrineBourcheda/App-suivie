@@ -1,5 +1,6 @@
 import 'package:app_geo/user/controller/user.controller.dart';
 import 'package:app_geo/user/model/user.model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,8 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -231,7 +234,7 @@ class __FormContentState extends State<_FormContent> {
                   }
 
                   bool emailValid = RegExp(
-                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+\.[a-zA-Z]+")
                       .hasMatch(value);
                   if (!emailValid) {
                     return '  Please enter a valid email';
@@ -428,8 +431,10 @@ class __FormContentState extends State<_FormContent> {
                             FullName: _ctrname.text,
                             email: _ctremail.text,
                             PassWord: _ctrpassword.text,
-                            role: 'parent');
-                        /*  addUser(user);*/
+                            role: 'parent',
+                            paymentDate: DateTime.now(),
+                            paymentStatus: 't');
+                        //addUser(user);
 
                         await makepayment("100", "INR", user);
                       }
@@ -443,11 +448,34 @@ class __FormContentState extends State<_FormContent> {
   }
 
   Widget _gap() => const SizedBox(height: 16);
+
+  void sendEmail(String email_user) async {
+    String username = 'votre_email@gmail.com';
+    String password = 'votre_mot_de_passe';
+
+    final smtpServer = gmail(username, password);
+
+    final message = Message()
+      // ..from =Ad(username, 'Votre nom')
+      ..recipients.add(email_user) // destinataire de l'email
+      ..subject = 'Payment will soon expired'
+      ..text = 'Contenu de l\'email'; // contenu de l'email en texte brut
+
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message envoyé: ' + sendReport.toString());
+    } on MailerException catch (e) {
+      print('Erreur lors de l\'envoi de l\'email: ' + e.toString());
+    }
+  }
+
   Map<String, dynamic>? paymentIntentData;
   Future<void> makepayment(
       String amount, String currency, User_app user) async {
     try {
       paymentIntentData = await createPaymentIntent(amount, currency);
+      String paymentStatuS = ' paid';
+
       if (paymentIntentData != null) {
         await Stripe.instance.initPaymentSheet(
             paymentSheetParameters: SetupPaymentSheetParameters(
@@ -458,9 +486,8 @@ class __FormContentState extends State<_FormContent> {
                 paymentIntentClientSecret: paymentIntentData!['client_secret'],
                 customerEphemeralKeySecret:
                     paymentIntentData!['ephemeralkey']));
-
-        await displayPaymentSheet(user);
       }
+      await displayPaymentSheet(user);
     } catch (e, s) {
       print("EXCEPTION ===$e$s");
     }
@@ -491,7 +518,21 @@ class __FormContentState extends State<_FormContent> {
     try {
       await Stripe.instance.presentPaymentSheet();
       Get.snackbar("Payment info", "pay successful");
+
+      // Mettre à jour le statut de paiement en fonction de la date
+      final now = DateTime.now();
+      final paymentDate = user.paymentDate ?? now;
+      user.paymentDate = paymentDate;
+      final paymentStatus =
+          now.difference(paymentDate).inDays <= 30 ? 'paid' : 'expired';
+      user.paymentStatus = paymentStatus;
+
+      // Mettre à jour la base de données Firebase avec les informations mises à jour de l'utilisateur
       addUser(user);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Login()),
+      );
     } on Exception catch (e) {
       if (e is StripeException) {
         print("error from stripe $e");

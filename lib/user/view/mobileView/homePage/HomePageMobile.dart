@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:app_geo/user/view/mobileView/Components/chatParent.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +31,7 @@ class WelcomePage extends StatelessWidget {
                 delay: 2000,
                 child: Container(
                   margin: EdgeInsets.only(top: 10, bottom: 100),
-                  child: Text("APP NAME",
+                  child: Text("KidLocator",
                       textAlign: TextAlign.center,
                       style: GoogleFonts.oleoScript(
                           textStyle: TextStyle(

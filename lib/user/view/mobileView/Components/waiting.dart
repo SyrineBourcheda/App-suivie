@@ -56,20 +56,23 @@ class _WaitingPage extends State<WaitingPage> {
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                             mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: Text(
-                                  "Waiting for child to connect ...",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.oleoScript(
-                                    fontSize: 30,
-                                    fontStyle: FontStyle.italic,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
+                                  padding: const EdgeInsets.all(20),
+                                  child: Text(
+                                    "Waiting for child to connect ...",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.oleoScript(
+                                      fontSize: 30,
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black,
+                                    ),
+                                  )),
+                              CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color(0x99000000)),
+                              )
 
                               //child: Text("En attente de la connexion de l'enfant..." + _id!),
                             ])),

@@ -10,3 +10,16 @@ Future addMessage(Message message) async {
   message.idMessage=docUser.id;
   await docUser.set(message.toJson());
 }
+final CollectionReference messageCollection =
+      FirebaseFirestore.instance.collection('Messages');
+ void markAllAsSeen(String otherUsername) async {
+    await messageCollection
+        .where('sender', isEqualTo: otherUsername)
+        .where('isSeen', isEqualTo: false)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        doc.reference.update({'isSeen': true});
+      });
+    });
+  }

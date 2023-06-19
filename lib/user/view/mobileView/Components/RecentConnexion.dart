@@ -337,47 +337,46 @@ class RecentConnnexion extends StatelessWidget {
                                           children: [
                                             Hero(
                                               tag: index,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                child: Container(
-                                                  margin: const EdgeInsets.all(
-                                                      10.0),
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height /
-                                                      7,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      2,
-                                                  decoration: BoxDecoration(
-                                                    color: HexColor('#F5F2E0'),
-                                                    borderRadius:
-                                                        const BorderRadius.all(
-                                                      Radius.circular(10),
-                                                    ),
-                                                    boxShadow: const [
-                                                      BoxShadow(
-                                                        color: Color.fromARGB(
-                                                            255, 198, 196, 196),
-                                                        blurRadius: 6.0,
-                                                        spreadRadius: 2.0,
-                                                        offset: Offset(2, 2.0),
-                                                      )
-                                                    ],
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(
-                                                          _images[index]!),
-                                                      //fit: BoxFit.cover,
-                                                    ),
+                                              child: Container(
+                                                margin:
+                                                    const EdgeInsets.all(20.0),
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    7,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    2,
+                                                decoration: BoxDecoration(
+                                                  color: HexColor('#F5F2E0'),
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                  boxShadow: const [
+                                                    BoxShadow(
+                                                      color: Color.fromARGB(
+                                                          255, 198, 196, 196),
+                                                      blurRadius: 6.0,
+                                                      spreadRadius: 2.0,
+                                                      offset: Offset(2, 2.0),
+                                                    )
+                                                  ],
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: Image.network(
+                                                    _images[index]!,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 60, top: 10),
+                                                  left: 55),
                                               child: Text(
                                                 childrenName[index]!,
                                                 style: GoogleFonts.oleoScript(
@@ -387,7 +386,7 @@ class RecentConnnexion extends StatelessWidget {
                                                       .withOpacity(.5),
                                                 ),
                                               ),
-                                            )
+                                            ),
                                           ],
                                         ),
                                       ),

@@ -24,3 +24,31 @@ Future<Child> getChildById(String? idd) async {
 
   return childs[0];
 }
+
+Future<String?> getNomEnfant(String? enfantId) async {
+  DocumentSnapshot documentSnapshot =
+      await FirebaseFirestore.instance.collection('Childs').doc(enfantId).get();
+
+  if (documentSnapshot.exists) {
+    Map<String, dynamic> enfantData =
+        documentSnapshot.data() as Map<String, dynamic>;
+    String nom = enfantData['Name'];
+    return nom;
+  } else {
+    return null;
+  }
+}
+
+Future<String?> getParenyId(String? enfantId) async {
+  DocumentSnapshot documentSnapshot =
+      await FirebaseFirestore.instance.collection('Childs').doc(enfantId).get();
+
+  if (documentSnapshot.exists) {
+    Map<String, dynamic> enfantData =
+        documentSnapshot.data() as Map<String, dynamic>;
+    String id = enfantData['ParentId'];
+    return id;
+  } else {
+    return null;
+  }
+}
