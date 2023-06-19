@@ -1,24 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# app_geo
 
-A new Flutter project.
+# Geolocation and child tracking application
 
-## Getting Started
+This project consists in designing and developing a mobile application allowing parents to follow all their children's movements according to their schedules. Indeed, after specifying class schedules, activities, etc., parents will receive notifications in case their children go out of the authorized zone. The application allows parents to communicate with their children in case of overstepping the zone and to ask for an explanation.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Suivie-Enfant
->>>>>>> 7d1ffc887078e53f620ab5a7b534e07c9de73e63
-=======
-# App-suivie
->>>>>>> origin/main
