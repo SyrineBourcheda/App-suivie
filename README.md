@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # app_geo
 
 A new Flutter project.
@@ -18,3 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 =======
 # Suivie-Enfant
 >>>>>>> 7d1ffc887078e53f620ab5a7b534e07c9de73e63
+=======
+# App-suivie
+>>>>>>> origin/main
